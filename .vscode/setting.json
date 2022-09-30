@@ -1,0 +1,8 @@
+{
+    "go.docsTool": "gogetdoc",
+    "go.formatTool": "gofmt",
+    "go.inferGopath": false,
+    "go.toolsEnvVars": {
+        "GOFLAGS": "-tags=test"
+    }
+  }
