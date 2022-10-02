@@ -2,6 +2,7 @@ package server
 
 import (
 	"net/http"
+	"vn_oil_price/petrol_price"
 
 	"github.com/gin-gonic/gin"
 )
@@ -27,6 +28,10 @@ func SetupRouter() *gin.Engine {
 		} else {
 			c.JSON(http.StatusOK, gin.H{"user": user, "status": "no value"})
 		}
+	})
+
+	r.GET("/prices/today", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"data": petrol_price.GetPriceCacheInstance().GetTodayPrice()})
 	})
 
 	// Authorized group (uses gin.BasicAuth() middleware)

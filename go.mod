@@ -2,6 +2,8 @@ module vn_oil_price
 
 go 1.19
 
+require github.com/gocolly/colly v1.2.0
+
 require (
 	github.com/PuerkitoBio/goquery v1.8.0 // indirect
 	github.com/andybalholm/cascadia v1.3.1 // indirect
@@ -15,7 +17,6 @@ require (
 	github.com/go-playground/validator/v10 v10.11.1 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/goccy/go-json v0.9.11 // indirect
-	github.com/gocolly/colly v1.2.0 // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/golang/protobuf v1.5.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect

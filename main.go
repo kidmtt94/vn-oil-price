@@ -1,13 +1,15 @@
 package main
 
 import (
-	"vn_oil_price/petrol_price"
+	"vn_oil_price/backgroundProcess"
+	"vn_oil_price/server"
 )
 
 func main() {
-	// r := server.SetupRouter()
-	petrol_price.CrawPetrolimex()
+	// Run backround task
+	r := server.SetupRouter()
+	backgroundProcess.RunBackgroundTask()
 	// Listen and Server in 0.0.0.0:8080
-	// r.Run(":8081")
+	r.Run(":8081")
 
 }
