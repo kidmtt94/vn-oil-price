@@ -31,7 +31,13 @@ func SetupRouter() *gin.Engine {
 	})
 
 	r.GET("/prices/today", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"data": petrol_price.GetPriceCacheInstance().GetTodayPrice()})
+		result, err := petrol_price.GetPriceCacheInstance().GetTodayPrice()
+		if err == nil {
+			c.JSON(http.StatusOK, gin.H{"data": result})
+		} else {
+			c.Status(http.StatusNoContent)
+		}
+
 	})
 
 	// Authorized group (uses gin.BasicAuth() middleware)

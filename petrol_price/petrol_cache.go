@@ -46,16 +46,16 @@ func (priceCacheInstance *PetrolPriceCache) UpdatePriceByDate(date, name string,
 	}
 }
 
-func (priceCacheInstance *PetrolPriceCache) GetTodayPrice() interface{} {
+func (priceCacheInstance *PetrolPriceCache) GetTodayPrice() (interface{}, error) {
 	now := time.Now()
 	loc, _ := time.LoadLocation("Asia/Ho_Chi_Minh")
 	currentTime := now.In(loc)
 	today := currentTime.String()[0:10]
 
 	if dayPriceCache, ok := priceCacheInstance.priceMap[today]; ok {
-		return dayPriceCache.priceMap
+		return dayPriceCache.priceMap, nil
 	} else {
-		CrawPetrolimex()
-		return priceCacheInstance.priceMap[today].priceMap
+		err := fmt.Errorf("data is currently unavailable")
+		return nil, err
 	}
 }
