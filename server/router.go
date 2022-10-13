@@ -19,17 +19,6 @@ func SetupRouter() *gin.Engine {
 		c.String(http.StatusOK, "pong")
 	})
 
-	// Get user value
-	r.GET("/user/:name", func(c *gin.Context) {
-		user := c.Params.ByName("name")
-		value, ok := db[user]
-		if ok {
-			c.JSON(http.StatusOK, gin.H{"user": user, "value": value})
-		} else {
-			c.JSON(http.StatusOK, gin.H{"user": user, "status": "no value"})
-		}
-	})
-
 	r.GET("/prices/today", func(c *gin.Context) {
 		result, err := petrol_price.GetPriceCacheInstance().GetTodayPrice()
 		if err == nil {
