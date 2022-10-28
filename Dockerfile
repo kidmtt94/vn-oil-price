@@ -1,13 +1,29 @@
-FROM golang:1.19-alpine
+# Build Stage
+# First pull Golang image
+FROM golang:1.19-alpine as build-env
  
-WORKDIR /app
+# Set environment variable
+ENV APP_NAME vn-oil-price
+ENV CMD_PATH main.go
  
-COPY go.mod ./
-COPY go.sum ./
-RUN go mod download
-
-COPY *.go ./
+# Copy application data into image
+COPY . $GOPATH/src/$APP_NAME
+WORKDIR $GOPATH/src/$APP_NAME
  
-RUN go build -o /vn_oil_price
+# Budild application
+RUN CGO_ENABLED=0 go build -v -o /$APP_NAME $GOPATH/src/$APP_NAME/$CMD_PATH
  
-CMD ["/vn_oil_price"]
+# Run Stage
+FROM alpine:3.14
+ 
+# Set environment variable
+ENV APP_NAME vn-oil-price
+ 
+# Copy only required data into this image
+COPY --from=build-env /$APP_NAME .
+ 
+# Expose application port
+EXPOSE 8081
+ 
+# Start app
+CMD ./$APP_NAME
