@@ -1,4 +1,4 @@
 # vn-oil-price
 Server analyze oil price
 <br>
-![Alt text](/oilprice.png)
+![Alt text](/images/oilprice.png)
