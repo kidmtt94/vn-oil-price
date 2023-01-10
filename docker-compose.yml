@@ -1,0 +1,14 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3.9'
+
+# Define services
+services:
+
+  # App Service
+  vnoilprices:
+    # Configuration for building the docker image for the service
+    image: vnoilpricetest
+    ports:
+      - "80:80" 
+    restart: unless-stopped

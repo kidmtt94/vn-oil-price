@@ -21,9 +21,9 @@ ENV APP_NAME vn-oil-price
  
 # Copy only required data into this image
 COPY --from=build-env /$APP_NAME .
- 
+RUN apk --no-cache add tzdata
 # Expose application port
-EXPOSE 8081
+EXPOSE 80
  
 # Start app
 CMD ./$APP_NAME
