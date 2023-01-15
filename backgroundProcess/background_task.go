@@ -1,5 +1,5 @@
 package backgroundProcess
 
 func RunBackgroundTask() {
-	go fetchingPetrol()
+	go fetchingLatestPrices()
 }

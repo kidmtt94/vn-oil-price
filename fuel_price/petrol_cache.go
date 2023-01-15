@@ -1,4 +1,4 @@
-package petrol_price
+package fuel_price
 
 import (
 	"fmt"
@@ -53,7 +53,12 @@ func (priceCacheInstance *PetrolPriceCache) GetTodayPrice() (interface{}, error)
 	today := currentTime.String()[0:10]
 
 	if dayPriceCache, ok := priceCacheInstance.priceMap[today]; ok {
-		return dayPriceCache.priceMap, nil
+		var r []models.OilPrice
+		for _, element := range dayPriceCache.priceMap {
+			r = append(r, element)
+		}
+		fmt.Println("Retrieve oil price from cache")
+		return r, nil
 	} else {
 		err := fmt.Errorf("data is currently unavailable")
 		return nil, err
