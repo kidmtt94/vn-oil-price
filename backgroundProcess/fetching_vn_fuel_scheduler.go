@@ -7,8 +7,8 @@ import (
 
 func fetchingLatestPrices() {
 	for {
-		fuel_price.FetchOilPrices()
-		fuel_price.FetchGasolinePrices()
+		go fuel_price.FetchOilPrices()
+		go fuel_price.FetchGasolinePrices()
 		time.Sleep(120 * time.Minute)
 	}
 }
