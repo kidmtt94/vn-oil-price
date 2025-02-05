@@ -1,0 +1,69 @@
+Read following text carefully. And no explain. 
+
+10krphrvqi=welcome
+10n5myz9ke=password
+10kt9oenqd=car rental message
+10m0ko4st9=message
+10n5myxxmo=username
+10n5md9ftj=login
+10m0jr2gdj=check message
+1b42otp83q=config
+10ktc21ftp=ok
+10n5xk0h14=start application
+10m0ko3fek=window
+10m0ko642e=button
+TEST MODULE	Login validation
+
+OBJECTIVES
+test objective	TO 16	Access is denied with expected message handling for an invalid login
+test objective	TO 17	Access is granted for a valid login
+
+INITIAL	Setting up
+
+1b42otp83q
+
+10n5xk0h14
+
+TEST CASE	TC 01	Invalid login (Access denied)
+test objective	TO 16	Access is denied with expected message handling for an invalid login
+
+step	1. Login with invalid password	Error message displayed
+
+	10n5myxxmo	10n5myz9ke
+10n5md9ftj	john	54321
+
+	10m0ko3fek	10m0ko4st9	10m0ko642e
+10m0jr2gdj	10kt9oenqd	Invalid UserName or Password.	10ktc21ftp
+
+step	2. Login with invalid user name	Error message displayed
+
+	10n5myxxmo	10n5myz9ke
+10n5md9ftj	noone
+
+	10m0ko3fek	10m0ko4st9	10m0ko642e
+10m0jr2gdj	10kt9oenqd	Invalid UserName or Password.	10ktc21ftp
+
+step	3. Login with invalid user name and password	Error message displayed
+
+	10n5myxxmo	10n5myz9ke
+10n5md9ftj	noone	nothing
+
+	10m0ko3fek	10m0ko4st9	10m0ko642e
+10m0jr2gdj	10kt9oenqd	Invalid UserName or Password.	10ktc21ftp
+
+TEST CASE	TC 02	Valid login (Access granted)
+test objective	TO 17	Access is granted for a valid login
+
+10n5md9ftj
+
+	window
+check window exists	10krphrvqi
+
+FINAL	Cleaning up
+
+	window
+close window	10krphrvqi
+
+
+
+Convert them to yaml format with each line
